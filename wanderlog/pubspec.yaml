@@ -39,6 +39,8 @@ dependencies:
   http: ^0.13.0
   flutter_typeahead: ^5.2.0
   google_place: ^0.4.7
+
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

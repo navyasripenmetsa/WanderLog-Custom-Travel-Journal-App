@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
+void main() => runApp(MyApp());
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,17 +28,71 @@ class _PlacesSearchScreenState extends State<PlacesSearchScreen> {
   LatLng? _selectedLocation;
   Set<Marker> _markers = {};
   static const String apiKey =
-      "AIzaSyCOr_KyM48c7Uu_2Pk21yXdItisrZbCR10"; // Replace with your API Key
+      "AIzaSyCOr_KyM48c7Uu_2Pk21yXdItisrZbCR10"; // Store securely
+
+  List<dynamic> visitedPlaces = [];
+  List<dynamic> upcomingPlaces = [];
 
   @override
   void initState() {
     super.initState();
     _loadMapStyle();
+    _loadPlacesData(); // Load visited and upcoming places
   }
 
+  // Load the map style
   Future<void> _loadMapStyle() async {
     String style = await rootBundle.loadString('assets/map_style.json');
     _mapController?.setMapStyle(style);
+  }
+
+  // Load visited and upcoming places from JSON
+  Future<void> _loadPlacesData() async {
+    try {
+      String data = await rootBundle.loadString('assets/places_data.json');
+      final jsonData = json.decode(data);
+      setState(() {
+        visitedPlaces = jsonData['visited'];
+        upcomingPlaces = jsonData['upcoming'];
+        _addMarkersFromPlacesData();
+      });
+    } catch (e) {
+      print("Error loading places data: $e");
+    }
+  }
+
+  // Add markers for visited and upcoming places
+  void _addMarkersFromPlacesData() {
+    Set<Marker> tempMarkers = {};
+
+    // Add visited places as green markers
+    for (var place in visitedPlaces) {
+      tempMarkers.add(
+        Marker(
+          markerId: MarkerId(place['name']),
+          position: LatLng(place['lat'], place['lng']),
+          infoWindow: InfoWindow(title: place['name']),
+          icon:
+              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+        ),
+      );
+    }
+
+    // Add upcoming places as red markers
+    for (var place in upcomingPlaces) {
+      tempMarkers.add(
+        Marker(
+          markerId: MarkerId(place['name']),
+          position: LatLng(place['lat'], place['lng']),
+          infoWindow: InfoWindow(title: place['name']),
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+        ),
+      );
+    }
+
+    setState(() {
+      _markers = tempMarkers;
+    });
   }
 
   Future<void> _searchLocation() async {
@@ -50,6 +106,13 @@ class _PlacesSearchScreenState extends State<PlacesSearchScreen> {
         setState(() {
           _selectedLocation = LatLng(loc.latitude, loc.longitude);
           _markers.clear();
+          _markers.add(
+            Marker(
+              markerId: MarkerId("searched_location"),
+              position: _selectedLocation!,
+              infoWindow: InfoWindow(title: "Searched Location"),
+            ),
+          );
         });
         _mapController
             ?.animateCamera(CameraUpdate.newLatLngZoom(_selectedLocation!, 14));
@@ -60,16 +123,15 @@ class _PlacesSearchScreenState extends State<PlacesSearchScreen> {
     }
   }
 
-  void _showPlaceDetails(dynamic place, String? photoReference) {
-    // Generate image URL only if photoReference is valid
-    String imageUrl = (photoReference != null && photoReference.isNotEmpty)
-        ? "https://maps.googleapis.com/maps/api/place/photo"
-            "?maxwidth=400"
-            "&photo_reference=$photoReference"
-            "&key=$apiKey"
-        : ""; // Empty URL if there's no photo
+  void _showPlaceDetails(dynamic place) async {
+    String imageUrl = '';
 
-    print("Generated Image URL: $imageUrl"); // Debugging
+    if (place.containsKey('photos') && place['photos'].isNotEmpty) {
+      String photoReference = place['photos'][0]['photo_reference'];
+      imageUrl = await _getPlaceImage(photoReference);
+    }
+
+    if (!mounted) return; // Ensure the widget is still active
 
     showModalBottomSheet(
       context: context,
@@ -85,30 +147,13 @@ class _PlacesSearchScreenState extends State<PlacesSearchScreen> {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
-
-              // Show image if a valid URL exists, otherwise show a placeholder
-              if (imageUrl.isNotEmpty)
-                Image.network(
-                  imageUrl,
-                  height: 150,
-                  fit: BoxFit.cover,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return Center(child: CircularProgressIndicator());
-                  },
-                  errorBuilder: (context, error, stackTrace) {
-                    print("Image failed to load: $error");
-                    return Image.asset('assets/no_image_available.png',
-                        height: 150);
-                  },
-                )
-              else
-                Text("No image available"),
-
-              SizedBox(height: 10),
               Text("⭐ Rating: ${place['rating'] ?? 'N/A'}"),
               if (place.containsKey('vicinity'))
                 Text("📍 Location: ${place['vicinity']}"),
+              SizedBox(height: 10),
+              imageUrl.isNotEmpty
+                  ? Image.network(imageUrl, height: 200, fit: BoxFit.cover)
+                  : Text("No image available"),
             ],
           ),
         );
@@ -136,12 +181,10 @@ class _PlacesSearchScreenState extends State<PlacesSearchScreen> {
         setState(() {
           _markers.clear();
           _markers.addAll(topPlaces.map((place) {
-            String? photoReference =
-                place['photos']?[0]['photo_reference']; // Fetch first photo
-            print("Photo Reference: $photoReference");
-            String imageUrl = photoReference != null
-                ? "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=$photoReference&key=$apiKey"
-                : "https://via.placeholder.com/400"; // Fallback image
+            String photoReference =
+                place['photos'] != null && place['photos'].isNotEmpty
+                    ? place['photos'][0]['photo_reference']
+                    : '';
 
             return Marker(
               markerId: MarkerId(place['name']),
@@ -152,8 +195,10 @@ class _PlacesSearchScreenState extends State<PlacesSearchScreen> {
               infoWindow: InfoWindow(
                 title: place['name'],
                 snippet: "Rating: ${place['rating'] ?? 'N/A'}",
-                onTap: () => _showPlaceDetails(place, imageUrl),
               ),
+              icon: BitmapDescriptor.defaultMarkerWithHue(
+                  BitmapDescriptor.hueBlue),
+              onTap: () => _showPlaceDetails(place), // ✅ Ensure this triggers
             );
           }));
         });
@@ -163,6 +208,15 @@ class _PlacesSearchScreenState extends State<PlacesSearchScreen> {
     } catch (e) {
       print("Error fetching nearby places: $e");
     }
+  }
+
+  Future<String> _getPlaceImage(String photoReference) async {
+    if (photoReference.isEmpty) return ''; // No photo
+
+    return "https://maps.googleapis.com/maps/api/place/photo"
+        "?maxwidth=400"
+        "&photoreference=$photoReference"
+        "&key=$apiKey";
   }
 
   @override

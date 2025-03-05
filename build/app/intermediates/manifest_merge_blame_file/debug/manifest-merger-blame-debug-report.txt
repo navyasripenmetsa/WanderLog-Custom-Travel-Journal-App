@@ -1,0 +1,204 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.integrated"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="35" />
+10    <!--
+11         The INTERNET permission is required for development. Specifically,
+12         the Flutter tool needs it to communicate with the running application
+13         to allow setting breakpoints, to provide hot reload, etc.
+14    -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->C:\Users\navya\integrated\android\app\src\debug\AndroidManifest.xml:6:5-66
+15-->C:\Users\navya\integrated\android\app\src\debug\AndroidManifest.xml:6:22-64
+16
+17    <queries>
+17-->C:\Users\navya\integrated\android\app\src\main\AndroidManifest.xml:38:5-43:15
+18        <intent>
+18-->C:\Users\navya\integrated\android\app\src\main\AndroidManifest.xml:39:9-42:18
+19            <action android:name="android.intent.action.PROCESS_TEXT" />
+19-->C:\Users\navya\integrated\android\app\src\main\AndroidManifest.xml:40:13-72
+19-->C:\Users\navya\integrated\android\app\src\main\AndroidManifest.xml:40:21-70
+20
+21            <data android:mimeType="text/plain" />
+21-->C:\Users\navya\integrated\android\app\src\main\AndroidManifest.xml:41:13-50
+21-->C:\Users\navya\integrated\android\app\src\main\AndroidManifest.xml:41:19-48
+22        </intent>
+23        <!-- Needs to be explicitly declared on Android R+ -->
+24        <package android:name="com.google.android.apps.maps" />
+24-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\navya\.gradle\caches\transforms-3\f4d369bb198debe8c89a7b9800366cf3\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:33:9-64
+24-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\navya\.gradle\caches\transforms-3\f4d369bb198debe8c89a7b9800366cf3\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:33:18-61
+25    </queries> <!-- Include required permissions for Google Maps API to run. -->
+26    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+26-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\navya\.gradle\caches\transforms-3\f4d369bb198debe8c89a7b9800366cf3\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:23:5-79
+26-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\navya\.gradle\caches\transforms-3\f4d369bb198debe8c89a7b9800366cf3\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:23:22-76
+27
+28    <uses-feature
+28-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\navya\.gradle\caches\transforms-3\f4d369bb198debe8c89a7b9800366cf3\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:26:5-28:35
+29        android:glEsVersion="0x00020000"
+29-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\navya\.gradle\caches\transforms-3\f4d369bb198debe8c89a7b9800366cf3\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:27:9-41
+30        android:required="true" />
+30-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\navya\.gradle\caches\transforms-3\f4d369bb198debe8c89a7b9800366cf3\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:28:9-32
+31
+32    <permission
+32-->[androidx.core:core:1.13.1] C:\Users\navya\.gradle\caches\transforms-3\889ae3adf7a24645889ee22f4dad2cac\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+33        android:name="com.example.integrated.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+33-->[androidx.core:core:1.13.1] C:\Users\navya\.gradle\caches\transforms-3\889ae3adf7a24645889ee22f4dad2cac\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+34        android:protectionLevel="signature" />
+34-->[androidx.core:core:1.13.1] C:\Users\navya\.gradle\caches\transforms-3\889ae3adf7a24645889ee22f4dad2cac\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+35
+36    <uses-permission android:name="com.example.integrated.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+36-->[androidx.core:core:1.13.1] C:\Users\navya\.gradle\caches\transforms-3\889ae3adf7a24645889ee22f4dad2cac\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+36-->[androidx.core:core:1.13.1] C:\Users\navya\.gradle\caches\transforms-3\889ae3adf7a24645889ee22f4dad2cac\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+37
+38    <application
+39        android:name="android.app.Application"
+40        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+40-->[androidx.core:core:1.13.1] C:\Users\navya\.gradle\caches\transforms-3\889ae3adf7a24645889ee22f4dad2cac\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+41        android:debuggable="true"
+42        android:extractNativeLibs="true"
+43        android:icon="@mipmap/ic_launcher"
+44        android:label="integrated" >
+45
+46        <!-- ✅ Google Maps API Key Added Here -->
+47        <meta-data
+48            android:name="com.google.android.geo.API_KEY"
+49            android:value="AIzaSyCOr_KyM48c7Uu_2Pk21yXdItisrZbCR10" />
+50
+51        <activity
+52            android:name="com.example.integrated.MainActivity"
+53            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+54            android:exported="true"
+55            android:hardwareAccelerated="true"
+56            android:launchMode="singleTop"
+57            android:taskAffinity=""
+58            android:theme="@style/LaunchTheme"
+59            android:windowSoftInputMode="adjustResize" >
+60            <meta-data
+61                android:name="io.flutter.embedding.android.NormalTheme"
+62                android:resource="@style/NormalTheme" />
+63
+64            <intent-filter>
+65                <action android:name="android.intent.action.MAIN" />
+66
+67                <category android:name="android.intent.category.LAUNCHER" />
+68            </intent-filter>
+69        </activity>
+70
+71        <!-- Don't delete the meta-data below. -->
+72        <meta-data
+73            android:name="flutterEmbedding"
+74            android:value="2" />
+75
+76        <service
+76-->[:geolocator_android] C:\Users\navya\integrated\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-12:56
+77            android:name="com.baseflow.geolocator.GeolocatorLocationService"
+77-->[:geolocator_android] C:\Users\navya\integrated\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-77
+78            android:enabled="true"
+78-->[:geolocator_android] C:\Users\navya\integrated\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:13-35
+79            android:exported="false"
+79-->[:geolocator_android] C:\Users\navya\integrated\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-37
+80            android:foregroundServiceType="location" />
+80-->[:geolocator_android] C:\Users\navya\integrated\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-53
+81
+82        <uses-library
+82-->[androidx.window:window:1.2.0] C:\Users\navya\.gradle\caches\transforms-3\8859fd2468ade3ef2655d1f63d6737f2\transformed\jetified-window-1.2.0\AndroidManifest.xml:23:9-25:40
+83            android:name="androidx.window.extensions"
+83-->[androidx.window:window:1.2.0] C:\Users\navya\.gradle\caches\transforms-3\8859fd2468ade3ef2655d1f63d6737f2\transformed\jetified-window-1.2.0\AndroidManifest.xml:24:13-54
+84            android:required="false" />
+84-->[androidx.window:window:1.2.0] C:\Users\navya\.gradle\caches\transforms-3\8859fd2468ade3ef2655d1f63d6737f2\transformed\jetified-window-1.2.0\AndroidManifest.xml:25:13-37
+85        <uses-library
+85-->[androidx.window:window:1.2.0] C:\Users\navya\.gradle\caches\transforms-3\8859fd2468ade3ef2655d1f63d6737f2\transformed\jetified-window-1.2.0\AndroidManifest.xml:26:9-28:40
+86            android:name="androidx.window.sidecar"
+86-->[androidx.window:window:1.2.0] C:\Users\navya\.gradle\caches\transforms-3\8859fd2468ade3ef2655d1f63d6737f2\transformed\jetified-window-1.2.0\AndroidManifest.xml:27:13-51
+87            android:required="false" /> <!-- Needs to be explicitly declared on P+ -->
+87-->[androidx.window:window:1.2.0] C:\Users\navya\.gradle\caches\transforms-3\8859fd2468ade3ef2655d1f63d6737f2\transformed\jetified-window-1.2.0\AndroidManifest.xml:28:13-37
+88        <uses-library
+88-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\navya\.gradle\caches\transforms-3\f4d369bb198debe8c89a7b9800366cf3\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:39:9-41:40
+89            android:name="org.apache.http.legacy"
+89-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\navya\.gradle\caches\transforms-3\f4d369bb198debe8c89a7b9800366cf3\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:40:13-50
+90            android:required="false" />
+90-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\navya\.gradle\caches\transforms-3\f4d369bb198debe8c89a7b9800366cf3\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:41:13-37
+91
+92        <activity
+92-->[com.google.android.gms:play-services-base:18.3.0] C:\Users\navya\.gradle\caches\transforms-3\4a0baae68aec8ddf35756692373b5e91\transformed\jetified-play-services-base-18.3.0\AndroidManifest.xml:20:9-22:45
+93            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+93-->[com.google.android.gms:play-services-base:18.3.0] C:\Users\navya\.gradle\caches\transforms-3\4a0baae68aec8ddf35756692373b5e91\transformed\jetified-play-services-base-18.3.0\AndroidManifest.xml:20:19-85
+94            android:exported="false"
+94-->[com.google.android.gms:play-services-base:18.3.0] C:\Users\navya\.gradle\caches\transforms-3\4a0baae68aec8ddf35756692373b5e91\transformed\jetified-play-services-base-18.3.0\AndroidManifest.xml:22:19-43
+95            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+95-->[com.google.android.gms:play-services-base:18.3.0] C:\Users\navya\.gradle\caches\transforms-3\4a0baae68aec8ddf35756692373b5e91\transformed\jetified-play-services-base-18.3.0\AndroidManifest.xml:21:19-78
+96
+97        <meta-data
+97-->[com.google.android.gms:play-services-basement:18.3.0] C:\Users\navya\.gradle\caches\transforms-3\aa568bf11239b6a9b2866fb2d7c8f9fe\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:21:9-23:69
+98            android:name="com.google.android.gms.version"
+98-->[com.google.android.gms:play-services-basement:18.3.0] C:\Users\navya\.gradle\caches\transforms-3\aa568bf11239b6a9b2866fb2d7c8f9fe\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:22:13-58
+99            android:value="@integer/google_play_services_version" />
+99-->[com.google.android.gms:play-services-basement:18.3.0] C:\Users\navya\.gradle\caches\transforms-3\aa568bf11239b6a9b2866fb2d7c8f9fe\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:23:13-66
+100
+101        <provider
+101-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\navya\.gradle\caches\transforms-3\40a1bd5ff2ce65cd1fad055cc690d356\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:24:9-32:20
+102            android:name="androidx.startup.InitializationProvider"
+102-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\navya\.gradle\caches\transforms-3\40a1bd5ff2ce65cd1fad055cc690d356\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:25:13-67
+103            android:authorities="com.example.integrated.androidx-startup"
+103-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\navya\.gradle\caches\transforms-3\40a1bd5ff2ce65cd1fad055cc690d356\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:26:13-68
+104            android:exported="false" >
+104-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\navya\.gradle\caches\transforms-3\40a1bd5ff2ce65cd1fad055cc690d356\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:27:13-37
+105            <meta-data
+105-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\navya\.gradle\caches\transforms-3\40a1bd5ff2ce65cd1fad055cc690d356\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+106                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+106-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\navya\.gradle\caches\transforms-3\40a1bd5ff2ce65cd1fad055cc690d356\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+107                android:value="androidx.startup" />
+107-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\navya\.gradle\caches\transforms-3\40a1bd5ff2ce65cd1fad055cc690d356\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+108            <meta-data
+108-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+109                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+109-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+110                android:value="androidx.startup" />
+110-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+111        </provider>
+112
+113        <receiver
+113-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+114            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+114-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+115            android:directBootAware="false"
+115-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+116            android:enabled="true"
+116-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+117            android:exported="true"
+117-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+118            android:permission="android.permission.DUMP" >
+118-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+119            <intent-filter>
+119-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+120                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+120-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+120-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+121            </intent-filter>
+122            <intent-filter>
+122-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+123                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+123-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+123-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+124            </intent-filter>
+125            <intent-filter>
+125-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+126                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+126-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+126-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+127            </intent-filter>
+128            <intent-filter>
+128-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+129                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+129-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+129-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\navya\.gradle\caches\transforms-3\408a642162969e960684d9c16b2f116a\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+130            </intent-filter>
+131        </receiver>
+132    </application>
+133
+134</manifest>
